@@ -2,6 +2,14 @@ import { useState, useEffect } from 'react'
 import './App.css'
 import axios from 'axios'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import {Canvas} from "@react-three/fiber";
+import { useGLTF, Stage, PresentationControls} from "@react-three/drei";
+import ModelCanvas from './Components/3DModels/ModelCanvas';
+
+function Model(props) {
+  const {scene} = useGLTF("/phantump_shiny.glb");
+  return <primitive object={scene} {...props}/>
+}
 
 function App() {
   const[users, setUsers] = useState([])
@@ -11,8 +19,10 @@ function App() {
     .catch(err => console.log(err))
   }, [])
   return (
-    <div className= "w-100 vh-100 d-flex justify-content-center align-items-center">
+
+    <div className= "d-flex justify-content-center align-items-center">
       <div className= "w-50">
+      <ModelCanvas />
      <table className = "table">
       <thead>
         <tr>
@@ -32,7 +42,7 @@ function App() {
           users.map(user => {
             return<tr>
               <td> {user.Name}</td>
-              <td> {user.Picture}</td>
+              <td><img src={user.Picture} alt={user.Name} style={{ width: '100px', height: 'auto' }} /></td>
               <td> {user.Series}</td>
             </tr>
           })
