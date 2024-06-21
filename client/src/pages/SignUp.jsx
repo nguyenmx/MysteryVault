@@ -12,7 +12,6 @@ import {
   MDBCheckbox
 } from 'mdb-react-ui-kit';
 import { Link } from 'react-router-dom';
-import axious from 'axios'
 import axios from 'axios';
 
 function SignUp() {
@@ -20,12 +19,25 @@ function SignUp() {
     const [email, setEmail] = useState()
     const [password, setPassword] = useState()
 
+    // const handleSubmit = (e) => {
+    //   e.preventDefault()
+    //   axios.post('http://localhost:3000/collection', {name, email, password})
+    //   .then(result => 
+    //     console.log(result))
+    //     .catch(err=> console.log(err))
+    // }
     const handleSubmit = (e) => {
-      e.preventDefault()
-      axios.post('', {name, email, password})
-      .then(result => console.log(result))
-      .catch(err=> console.log(err))
-    }
+      e.preventDefault();
+      console.log("Sending data:", { name, email, password });
+      axios.post('http://localhost:3000/collection', { name, email, password })
+        .then(result => {
+          console.log("Server response:", result);
+        })
+        .catch(err => {
+          console.log("Error:", err);
+        });
+    };
+    
   return (
     <MDBContainer fluid>
       <MDBCard className='text-black m-5' style={{ borderRadius: '25px' }}>
@@ -46,23 +58,27 @@ function SignUp() {
 
               <div className="d-flex flex-row align-items-center mb-4">
                 <MDBIcon fas icon="lock me-3" size='lg' />
-                <MDBInput label='Password' id='form3' type='password' />
+                <MDBInput label='Password' id='form3' type='password' onChange = {(e) => setPassword(e.target.value)} />
               </div>
-
+{/* 
               <div className="d-flex flex-row align-items-center mb-4">
                 <MDBIcon fas icon="key me-3" size='lg' />
                 <MDBInput label='Repeat your password' id='form4' type='password' onChange = {(e) => setEmail(e.target.value)} />
-              </div>
+              </div> */}
 
               <div className='mb-4'>
                 <MDBCheckbox name='flexCheck' value='' id='flexCheckDefault' label='Subscribe to our newsletter' />
               </div>
               
-              <MDBBtn className='mb-4' size='lg'>
-                <Link to="/login" style={{ color: 'white', textDecoration: 'none' }}>Register</Link>
-              </MDBBtn>
+              <MDBBtn className='mb-4' size='lg' type='submit' style={{ color: 'white' }}> Register </MDBBtn>
+
             </form>
              
+               
+            <MDBBtn className='mb-4' size='lg'>
+                <Link to="/login" style={{ color: 'white', textDecoration: 'none' }}>Login</Link>
+              </MDBBtn>
+
             </MDBCol>
 
             <MDBCol md='10' lg='6' className='order-1 order-lg-2 d-flex align-items-center'>
