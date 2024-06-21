@@ -3,7 +3,9 @@ import './App.css';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ModelCanvas from './Components/3DModels/ModelCanvas';
+import SignUp from './pages/SignUp';
 import Login from './pages/Login';
+import {BrowserRouter, Routes, Route} from 'react-router-dom'
 
 function App() {
   const [users, setUsers] = useState([]);
@@ -32,38 +34,45 @@ function App() {
   }
 
   return (
-    <div className="d-flex justify-content-center align-items-center">
-      <div className="w-75">
-        {/* Uncomment these components if you need to use them */}
-        {/* <ModelCanvas /> */}
-        <Login />
-        <table className="table table-bordered table-striped">
-          <thead className="thead-dark">
-            <tr>
-              <th>Name</th>
-              <th>Picture</th>
-              <th>Series</th>
-            </tr>
-          </thead>
-          <tbody>
-            {users.map((user, index) => (
-              <tr key={user.ID || index}>
-                <td>{user.Name}</td>
-                <td>
-                  <img
-                    src={user.Picture}
-                    alt={user.Name}
-                    style={{ width: '100px', height: 'auto' }}
-                  />
-                </td>
-                <td>{user.Series}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    </div>
-  );
+    <BrowserRouter>
+      <Routes>
+          <Route path= '/register' element={<SignUp/>}> </Route>
+          <Route path= '/login' element={<Login/>}> </Route>
+      </Routes>
+    </BrowserRouter>
+    // <div className="d-flex justify-content-center align-items-center">
+    //   <div className="w-75">
+    //     {/* Uncomment these components if you need to use them */}
+    //     {/* <ModelCanvas /> */}
+    //     <Login />
+    //     <table className="table table-bordered table-striped">
+    //       <thead className="thead-dark">
+    //         <tr>
+    //           <th>Name</th>
+    //           <th>Picture</th>
+    //           <th>Series</th>
+    //         </tr>
+    //       </thead>
+    //       <tbody>
+    //         {users.map((user, index) => (
+    //           <tr key={user.ID || index}>
+    //             <td>{user.Name}</td>
+    //             <td>
+    //               <img
+    //                 src={user.Picture}
+    //                 alt={user.Name}
+    //                 style={{ width: '100px', height: 'auto' }}
+    //               />
+    //             </td>
+    //             <td>{user.Series}</td>
+    //           </tr>
+    //         ))}
+    //       </tbody>
+    //     </table>
+    //   </div>
+    // </div>
+
+  )
 }
 
 export default App;
