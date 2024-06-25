@@ -37,6 +37,9 @@ function SmiskiPage() {
               <th>Name</th>
               <th>Picture</th>
               <th>Series</th>
+              <th>Body Type</th>
+              <th>Found In</th>
+              <th>Description</th>
             </tr>
           </thead>
           <tbody>
@@ -51,6 +54,9 @@ function SmiskiPage() {
                   />
                 </td>
                 <td>{user.Series}</td>
+                <td>{user["Body Type"]}</td>
+                <td>{user.Found}</td>
+                <td>{user.Description}</td>
               </tr>
             ))}
           </tbody>

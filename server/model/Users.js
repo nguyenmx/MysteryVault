@@ -5,6 +5,9 @@ const UserSchema = new mongoose.Schema({
     Name: String,
     Picture: String,
     Series: String, 
+    BodyType: String,
+    Description: String,
+    FoundIn: String,
 })
 
 const UserModel = mongoose.model("users", UserSchema);
