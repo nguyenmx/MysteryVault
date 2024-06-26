@@ -50,3 +50,19 @@ app.post("/login", (req, res) => {
 app.listen(3000, () => {
   console.log("Server is running on port 3000");
 });
+
+// fetch('https://api.pokemontcg.io/v2/cards', {
+//   headers: {
+//       'X-Api-Key': 'api_key_here',
+//   },
+// })
+//   .then((response) => response.json())
+
+
+  fetch('https://api.pokemontcg.io/v2/cards/xy7-54', {
+    headers: {
+        'X-Api-Key': 'api_key_here',
+    },
+})
+    .then((response) => response.json())
+    .then((data) => console.log(data));

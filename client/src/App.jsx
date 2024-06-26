@@ -6,6 +6,7 @@ import ModelCanvas from './Components/3DModels/ModelCanvas';
 import SignUp from './pages/SignUp';
 import Login from './pages/Login';
 import SmiskiPage from './pages/SmiskiPage';
+import PokemonCard from './pages/PokemonCard';
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
         <Route path='/signup' element={<SignUp />} />
         <Route path='/login' element={<Login />} />
         <Route path='/smiski' element={<SmiskiPage />} />
+        <Route path='/pokemon' element={<PokemonCard/>} />
       </Routes>
       {/* <div className="d-flex justify-content-center align-items-center">
         <div className="w-75">
